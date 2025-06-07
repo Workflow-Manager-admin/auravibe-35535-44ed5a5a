@@ -2,17 +2,57 @@ import React, { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useTheme } from "../../contexts/ThemeContext";
 
-// Placeholder avatar SVG
-const PlaceholderAvatar = () => (
-  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-accent/30 via-[#312241]/20 to-[#191919] border-4 border-accent/10 flex items-center justify-center shadow-lg overflow-hidden">
-    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" className="mx-auto" aria-hidden="true">
-      <circle cx="28" cy="19" r="11" fill="#191b22" />
-      <circle cx="28" cy="19" r="10" stroke="#780707AA" strokeWidth="2"/>
-      <ellipse cx="28" cy="40" rx="13" ry="11" fill="#191b22" />
-      <ellipse cx="28" cy="40" rx="12" ry="10" stroke="#78070788" strokeWidth="2"/>
-    </svg>
-  </div>
-);
+/**
+ * Shows a sample Unsplash avatar with attribution, matching the app's accessible style.
+ */
+const SampleAvatar = () => {
+  const avatarUrl =
+    "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=facearea&w=160&h=160&facepad=2&q=80";
+  const avatarAlt =
+    "Portrait of a smiling woman in pink sunglasses, by Lidya Nada on Unsplash";
+  const attribution = {
+    name: "Lidya Nada",
+    link: "https://unsplash.com/@lidyanada",
+    source: "Unsplash",
+    sourceLink: "https://unsplash.com/photos/8manzosDSGM"
+  };
+
+  return (
+    <div className="flex flex-col items-center">
+      <img
+        src={avatarUrl}
+        alt={avatarAlt}
+        className="w-20 h-20 rounded-full object-cover border-4 border-accent/30 shadow-lg"
+        draggable="false"
+      />
+      {/* Visible attribution below avatar for accessibility */}
+      <div className="mt-2 text-xs text-gray-300 text-center max-w-[155px]">
+        <span>
+          Photo by&nbsp;
+          <a
+            href={attribution.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-accent"
+            tabIndex={0}
+          >
+            {attribution.name}
+          </a>
+          &nbsp;on&nbsp;
+          <a
+            href={attribution.sourceLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-accent"
+            tabIndex={0}
+          >
+            {attribution.source}
+          </a>
+        </span>
+      </div>
+    </div>
+  );
+};
 
 // Toggle Switch Component
 function ToggleSwitch({ checked, onChange, label, id }) {
@@ -121,7 +161,7 @@ export default function SettingsPage() {
               className="w-20 h-20 rounded-full border-4 border-accent/10 object-cover shadow-lg"
             />
           ) : (
-            <PlaceholderAvatar />
+            <SampleAvatar />
           )}
           <div>
             <div className="text-2xl font-serif font-semibold text-secondary drop-shadow-md">{profileName}</div>
