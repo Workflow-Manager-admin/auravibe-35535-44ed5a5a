@@ -1,27 +1,50 @@
 import React, { useState, useRef, useEffect } from "react";
 
-// Demo/mock data for UI scaffolding
+/*
+  Demo/mock data for UI scaffolding
+  Updated: Use real, openly-licensed Unsplash/Pexels images for user avatars,
+  include alt text and attribution for each, displayed as a tooltip/overlay.
+*/
 const DEMO_CHAT_LIST = [
   {
     id: 1,
     username: "cutiequeen",
-    avatar: null,
+    // Photo by Lidya Nada on Unsplash
+    avatar:
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=facearea&w=160&h=160&facepad=2&q=80",
+    avatarAlt:
+      "Portrait of a smiling woman in pink sunglasses, by Lidya Nada on Unsplash",
+    avatarAttribution: {
+      name: "Lidya Nada",
+      link: "https://unsplash.com/@lidyanada",
+      source: "Unsplash",
+      sourceLink: "https://unsplash.com/photos/8manzosDSGM"
+    },
     preview: "See you soon! 💜",
     active: true,
     lastMessageTime: "6:14 PM",
     unread: 2,
     messages: [
-      // from, type, text, timestamp
       { fromMe: false, text: "Hey! How was your day 🥰", timestamp: "6:02 PM" },
       { fromMe: true, text: "Good! Just working on AuraGram stuff for launch.", timestamp: "6:04 PM" },
       { fromMe: false, text: "Ahhh so cool! Can't wait to see ✨", timestamp: "6:07 PM" },
-      { fromMe: true, text: "See you soon! 💜", timestamp: "6:14 PM" },
-    ],
+      { fromMe: true, text: "See you soon! 💜", timestamp: "6:14 PM" }
+    ]
   },
   {
     id: 2,
     username: "moodymuse",
-    avatar: null,
+    // Photo by Simon Maage on Unsplash
+    avatar:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&w=160&h=160&facepad=2&q=80",
+    avatarAlt:
+      "Three women laughing, by Simon Maage on Unsplash",
+    avatarAttribution: {
+      name: "Simon Maage",
+      link: "https://unsplash.com/@simonmaage",
+      source: "Unsplash",
+      sourceLink: "https://unsplash.com/photos/7Zb7kUyQg1E"
+    },
     preview: "I'll send the pics tomorrow.",
     active: false,
     lastMessageTime: "Yesterday",
@@ -29,20 +52,30 @@ const DEMO_CHAT_LIST = [
     messages: [
       { fromMe: false, text: "You at the studio today?", timestamp: "Yesterday" },
       { fromMe: true, text: "Yep! Just finished.", timestamp: "Yesterday" },
-      { fromMe: false, text: "I'll send the pics tomorrow.", timestamp: "Yesterday" },
-    ],
+      { fromMe: false, text: "I'll send the pics tomorrow.", timestamp: "Yesterday" }
+    ]
   },
   {
     id: 3,
     username: "plantparent",
-    avatar: null,
+    // Photo by Chris Lee on Unsplash
+    avatar:
+      "https://images.unsplash.com/photo-1465101178521-c1a9136a37b1?auto=format&fit=facearea&w=160&h=160&facepad=2&q=80",
+    avatarAlt:
+      "Tropical plant leaves close up, by Chris Lee on Unsplash",
+    avatarAttribution: {
+      name: "Chris Lee",
+      link: "https://unsplash.com/@chrislee",
+      source: "Unsplash",
+      sourceLink: "https://unsplash.com/photos/JLObOvUQKjc"
+    },
     preview: "🌱 Growing my new monstera!",
     active: false,
     lastMessageTime: "Mon",
     unread: 0,
     messages: [
       { fromMe: false, text: "🌱 Growing my new monstera!", timestamp: "Mon" }
-    ],
+    ]
   }
 ];
 
@@ -58,14 +91,20 @@ export default function MessagesPage() {
 
   useEffect(() => {
     // Scroll to bottom of chat view on new message or select
-    if (messagesEndRef.current) messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    if (messagesEndRef.current)
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
   }, [selectedIdx, selectedChat.messages.length]);
 
   // Handle sending message (demo - client only)
+  // PUBLIC_INTERFACE
   function handleSend(e) {
     e.preventDefault();
     if (!input.trim()) return;
-    const newMsg = { fromMe: true, text: input, timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) };
+    const newMsg = {
+      fromMe: true,
+      text: input,
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    };
     setChats(prev =>
       prev.map((chat, idx) =>
         idx === selectedIdx
@@ -73,7 +112,7 @@ export default function MessagesPage() {
               ...chat,
               messages: [...chat.messages, newMsg],
               preview: input,
-              lastMessageTime: newMsg.timestamp,
+              lastMessageTime: newMsg.timestamp
             }
           : chat
       )
@@ -136,14 +175,50 @@ export default function MessagesPage() {
               `}
               onClick={() => setSelectedIdx(idx)}
             >
-              {/* Avatar */}
-              <div className="relative w-11 h-11 min-w-[2.5rem] rounded-full bg-gradient-to-tr from-fuchsia-300/30 via-blue-100/10 to-black flex items-center justify-center overflow-hidden brightness-105 shadow-inner border border-accent/20">
+              {/* Avatar + Attribution Tooltip */}
+              <div className="relative w-11 h-11 min-w-[2.5rem] rounded-full bg-gradient-to-tr from-fuchsia-300/30 via-blue-100/10 to-black flex items-center justify-center overflow-hidden brightness-105 shadow-inner border border-accent/20 group/avatar">
                 {chat.avatar ? (
-                  <img
-                    src={chat.avatar}
-                    alt={`${chat.username}'s avatar`}
-                    className="w-full h-full rounded-full object-cover"
-                  />
+                  <>
+                    <img
+                      src={chat.avatar}
+                      alt={chat.avatarAlt || `${chat.username}'s avatar`}
+                      className="w-full h-full rounded-full object-cover"
+                      draggable="false"
+                    />
+                    {/* Attribution Tooltip for accessibility */}
+                    <div
+                      className="absolute left-1/2 top-full z-30 -translate-x-1/2 mt-2 w-[180px] md:w-[230px] px-3 py-2 rounded-lg bg-black/85 text-xs text-white shadow-xl opacity-0 group-hover/avatar:opacity-100 group-hover/avatar:pointer-events-auto transition-all pointer-events-none"
+                      style={{ fontSize: "0.92rem" }}
+                      role="tooltip"
+                    >
+                      Photo&nbsp;by&nbsp;
+                      <a
+                        href={chat.avatarAttribution?.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-accent"
+                        tabIndex={-1}
+                      >
+                        {chat.avatarAttribution?.name}
+                      </a>
+                      &nbsp;on&nbsp;
+                      <a
+                        href={
+                          chat.avatarAttribution?.source === "Unsplash"
+                            ? "https://unsplash.com"
+                            : chat.avatarAttribution?.source === "Pexels"
+                            ? "https://www.pexels.com"
+                            : "#"
+                        }
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-accent"
+                        tabIndex={-1}
+                      >
+                        {chat.avatarAttribution?.source}
+                      </a>
+                    </div>
+                  </>
                 ) : (
                   <span className="text-2xl font-bold text-white/70">
                     {chat.username.charAt(0).toUpperCase()}
@@ -185,14 +260,50 @@ export default function MessagesPage() {
           className="flex items-center px-4 py-2 md:py-4 border-b border-accent/15 gap-4 md:gap-5"
           style={{ minHeight: 72 }}
         >
-          {/* Profile avatar with glow */}
-          <div className="w-12 h-12 rounded-full bg-gradient-to-tl from-fuchsia-300/10 to-purple-700/20 flex items-center justify-center border border-accent/30 shadow-lg relative">
+          {/* Profile avatar with attribution overlay */}
+          <div className="relative w-12 h-12 rounded-full bg-gradient-to-tl from-fuchsia-300/10 to-purple-700/20 flex items-center justify-center border border-accent/30 shadow-lg group/avatar">
             {selectedChat.avatar ? (
-              <img
-                src={selectedChat.avatar}
-                alt={selectedChat.username}
-                className="w-full h-full rounded-full object-cover"
-              />
+              <>
+                <img
+                  src={selectedChat.avatar}
+                  alt={selectedChat.avatarAlt || selectedChat.username}
+                  className="w-full h-full rounded-full object-cover"
+                  draggable="false"
+                />
+                {/* Attribution popover below avatar (visible on hover/focus or always for accessibility) */}
+                <div
+                  className="absolute left-1/2 top-full -translate-x-1/2 mt-2 min-w-[170px] max-w-xs px-3 py-2 rounded-lg bg-black/85 text-xs text-white shadow-xl opacity-0 group-hover/avatar:opacity-100 focus-within:opacity-100 pointer-events-none group-hover/avatar:pointer-events-auto transition-all"
+                  style={{ fontSize: "0.92rem" }}
+                  role="tooltip"
+                >
+                  Photo&nbsp;by&nbsp;
+                  <a
+                    href={selectedChat.avatarAttribution?.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-accent"
+                    tabIndex={-1}
+                  >
+                    {selectedChat.avatarAttribution?.name}
+                  </a>
+                  &nbsp;on&nbsp;
+                  <a
+                    href={
+                      selectedChat.avatarAttribution?.source === "Unsplash"
+                        ? "https://unsplash.com"
+                        : selectedChat.avatarAttribution?.source === "Pexels"
+                        ? "https://www.pexels.com"
+                        : "#"
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-accent"
+                    tabIndex={-1}
+                  >
+                    {selectedChat.avatarAttribution?.source}
+                  </a>
+                </div>
+              </>
             ) : (
               <span className="text-2xl font-bold text-white/80">
                 {selectedChat.username.charAt(0).toUpperCase()}
@@ -224,16 +335,20 @@ export default function MessagesPage() {
                     max-w-[86vw] md:max-w-xl px-5 py-2.5 rounded-3xl
                     font-serif text-base whitespace-pre-line break-words
                     shadow-md border-2
-                    ${msg.fromMe ?
-                      "bg-gradient-to-tr from-fuchsia-500/20 to-pink-300/10 text-white/90 border-pink-400/20 ml-8 rounded-br-xl"
-                    : "bg-black/50 border-blue-200/10 text-white/85 mr-8 rounded-bl-xl"}
+                    ${
+                      msg.fromMe
+                        ? "bg-gradient-to-tr from-fuchsia-500/20 to-pink-300/10 text-white/90 border-pink-400/20 ml-8 rounded-br-xl"
+                        : "bg-black/50 border-blue-200/10 text-white/85 mr-8 rounded-bl-xl"
+                    }
                     relative
                   `}
                 >
                   {msg.text}
-                  <span className={`
+                  <span
+                    className={`
                     block text-xs font-serif text-accent/70 font-semibold mt-0.5 text-right opacity-70
-                  `}>
+                  `}
+                  >
                     {msg.timestamp}
                   </span>
                 </div>
