@@ -1,82 +1,36 @@
-# Lightweight React Template for KAVIA
+# My AuraGram – AuraVibe Frontend
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+This project is the React.js frontend for "My AuraGram" – a next-gen, vibe-centric, Instagram-inspired social platform.
 
 ## Features
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+- **Authentication:** Email & Google login (Firebase/Auth0 UI stubs)
+- **Profile Management:** Avatar, bio, username, theme & palette customization
+- **Media:** Image/video post UI (upload, caption, hashtag, mood filter stubs)
+- **Feed & Explore:** Vibrant, animated posts, trending & explore pages
+- **Engagement:** Like, comment, save, follow, real-time notification UI
+- **Stories:** Story bar, create & view stories, animated transitions
+- **Direct Messaging:** DM UI, real-time ready
+- **Admin Dashboard:** Moderate reports/content (UI only)
+- **Dark/Light Mode:** Theme toggle (global, persistent)
+- **Responsive:** Desktop (left menu), mobile (bottom tab), transitions, accessibility
+- **Bonus Placeholders:** Audio reels, AI caption/hashtag, filter suggestions, post scheduling, profile themes
+- **Fully Custom Tailwind:** Times New Roman everywhere, black background, white text default
 
 ## Getting Started
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-### `npm test`
-
-Launches the test runner in interactive watch mode.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Install dependencies: `npm install`
+- Run app: `npm start`
+- Run tests: `npm run test`
+- Build: `npm run build`
 
 ## Customization
 
-### Colors
+Global typography and color is set via Tailwind (`tailwind.config.js`) for brand consistency (Times New Roman, black bg, white text).
 
-The main brand colors are defined as CSS variables in `src/App.css`:
+## Structure
 
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
-```
-
-### Components
-
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
-
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
-
-## Learn More
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `/src/components` — UI and feature modules (Auth, Feed, Stories, ...).
+- `/src/pages` — Next/router-like pages (Feed, Explore, Profile, Admin).
+- `/src/contexts` — Theme/Auth providers.
+- `/src/hooks` — Feature and UI hooks.

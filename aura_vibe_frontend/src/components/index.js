@@ -1,5 +1,2 @@
-//
-// Placeholder for shared and feature-specific React components.
-// Add new components as separate files or folders here.
-//
+// Clean placeholder - will be replaced with full component structure for My AuraGram.
 export {};

@@ -1,5 +1,2 @@
-//
-// Placeholder for shared and feature-specific React hooks.
-// Example: useAuth, useFeed, useTheme, etc.
-//
+// Removed. Will create real hooks for Auth, Feed, Theme, etc.
 export {};
