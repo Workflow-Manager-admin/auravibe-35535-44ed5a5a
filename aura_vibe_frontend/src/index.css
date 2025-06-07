@@ -30,6 +30,31 @@ a:hover {
   color: #780707;
 }
 
+/* "Cool" animated gradient background for home page - attached via .home-gradient-bg */
+.home-gradient-bg {
+  background: linear-gradient(135deg, #171e3a 0%, #240c2b 40%, #55073A 70%, #121313 100%);
+  background-size: 400% 400%;
+  animation: gradientBG 18s ease infinite;
+}
+@keyframes gradientBG {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* Glowing nav label class - nav-glow */
+.nav-glow {
+  transition: color 0.2s, text-shadow 0.25s;
+}
+.nav-glow:hover, .nav-glow:focus {
+  color: #fff !important;
+  text-shadow:
+    0 0 8px #780707b3,
+    0 0 24px #fff8,
+    0 0 2px #fff;
+  filter: drop-shadow(0 0 6px #780707);
+}
+
 /* Tailwind helper: always prefer font-serif */
 * {
   font-family: 'Times New Roman', Times, serif;

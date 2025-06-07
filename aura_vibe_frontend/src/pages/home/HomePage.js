@@ -3,10 +3,13 @@ import React from "react";
 // PUBLIC_INTERFACE
 /**
  * AuraVibe Instagram-like Home Page, 3-column layout,
- * Times New Roman, Tailwind CSS, black bg, white text.
+ * Times New Roman, Tailwind CSS, animated gradient background, white text.
  * Left: Fixed vertical sidebar with icons
  * Mid: Post feed with sample posts
  * Right: Trending hashtags & suggested accounts
+ *
+ * Updated background for more dynamic "social media" style.
+ * Updated sidebar/glow effects are handled elsewhere (in Navigation).
  */
 export default function HomePage() {
   // Fake feed posts
@@ -33,22 +36,44 @@ export default function HomePage() {
       comments: ["pretty!", "slay!"],
     },
   ];
-  // Trending and suggested
-  const trending = ["#SummerVibes", "#GlowUp", "#ArtLover", "#InspoOfTheDay"];
+  // NEW health/lifestyle themed hashtags per instructions
+  const trending = [
+    "#workoutmotivation",
+    "#healthylifestyle",
+    "#wellnessjourney",
+    "#foodreels",
+    "#tastyrecipes",
+  ];
+
+  // NEW suggested accounts list per instructions
   const accounts = [
-    "@cutiequeen",
-    "@adventurebro",
-    "@dailyplantlove",
-    "@moodymuse",
-    "@kendalljenner",
+    "@joseph.rajan",
+    "@deborah_rose",
+    "@micah.muthu",
+    "@christy.vino",
+    "@gabrielraj_official",
+    "@natasha.anan",
+    "@princy.joy",
+    "@ashley_rajkumar",
+    "@roshan.isaac",
+    "@blessy.reign",
   ];
 
   // The surrounding sidebar/nav is now handled exclusively by AppLayout
   // Only render HOME PAGE main feed and right-side panel here
   return (
     <div
-      className="flex min-h-screen bg-black text-white font-serif"
-      style={{ fontFamily: "'Times New Roman', Times, serif" }}
+      className="flex min-h-screen bg-black text-white font-serif home-gradient-bg"
+      style={{
+        fontFamily: "'Times New Roman', Times, serif",
+        minHeight: "100vh",
+        // Fallback if CSS class does not load, but prefer Tailwind/CSS override
+        background:
+          "linear-gradient(135deg, #171e3a 0%, #240c2b 40%, #55073A 70%, #121313 100%)",
+        // Added blend for extra pop (subtle pattern)
+        backgroundSize: "400% 400%",
+        animation: "gradientBG 18s ease infinite",
+      }}
     >
       {/* --- Main Feed --- */}
       <main
