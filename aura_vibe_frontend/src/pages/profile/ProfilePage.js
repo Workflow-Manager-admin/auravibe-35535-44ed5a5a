@@ -115,12 +115,13 @@ export default function ProfilePage() {
         }}
       >
         <form
-          className="bg-black bg-opacity-85 p-12 rounded-[2.3rem] shadow-2xl w-full max-w-xl mx-auto flex flex-col gap-9 border border-gray-800 min-w-[360px] font-serif transition-all duration-200"
+          className="bg-black bg-opacity-85 p-12 rounded-[2.3rem] shadow-2xl w-full max-w-3xl mx-auto flex flex-col gap-9 border border-gray-800 min-w-[360px] sm:min-w-[380px] md:min-w-[520px] font-serif transition-all duration-200"
           autoComplete="off"
           onSubmit={handleSubmit}
           style={{
             boxShadow:
               "0 0 44px 10px rgba(120,7,57,0.11), 0 3px 18px #d6407c25",
+            maxWidth: "860px"
           }}
         >
           <h2 className="text-4xl text-center font-bold font-serif mb-1.5 text-accent tracking-wide drop-shadow glow">
@@ -327,10 +328,11 @@ export default function ProfilePage() {
       }}
     >
       <div
-        className="max-w-xl w-full mx-auto bg-black/80 rounded-3xl shadow-2xl border border-gray-800 p-8 pt-7 flex flex-col gap-8 items-center font-serif backdrop-blur-[2px]"
+        className="max-w-3xl w-full mx-auto bg-black/80 rounded-3xl shadow-2xl border border-gray-800 p-8 pt-7 flex flex-col gap-8 items-center font-serif backdrop-blur-[2px] sm:min-w-[380px] md:min-w-[520px]"
         style={{
           boxShadow: "0 0 44px 8px #7a174c11, 0 3px 28px #d6407c25",
           marginBottom: 35,
+          maxWidth: "860px"
         }}
       >
         {/* Profile Card */}
