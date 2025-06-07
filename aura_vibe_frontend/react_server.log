@@ -2,9 +2,9 @@
 > react-kavia@0.1.0 start
 > react-scripts start
 
-(node:17158) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:30068) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-(node:17158) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(node:30068) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 Starting the development server...
 
 Compiled successfully!
@@ -19,104 +19,17 @@ To create a production build, use npm run build.
 
 webpack compiled successfully
 Compiling...
-Failed to compile.
+Compiled with warnings.
 
-Module not found: Error: Can't resolve './pages/dms/DMsPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-ERROR in ./src/App.js 19:0-42
-Module not found: Error: Can't resolve './pages/dms/DMsPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
+[eslint] 
+src/pages/home/HomePage.js
+  Line 206:17:  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
 
-webpack compiled with 1 error
-Compiling...
-Failed to compile.
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
 
-Module not found: Error: Can't resolve './pages/dms/DMsPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-ERROR in ./src/App.js 19:0-42
-Module not found: Error: Can't resolve './pages/dms/DMsPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
+WARNING in [eslint] 
+src/pages/home/HomePage.js
+  Line 206:17:  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
 
-webpack compiled with 1 error
-Compiling...
-Failed to compile.
-
-Module not found: Error: Can't resolve './pages/dms/DMsPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-ERROR in ./src/App.js 19:0-42
-Module not found: Error: Can't resolve './pages/dms/DMsPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-
-ERROR in ./src/App.js 20:0-66
-Module not found: Error: Can't resolve './pages/admin/AdminDashboardPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-
-webpack compiled with 2 errors
-Compiling...
-Failed to compile.
-
-Module not found: Error: Can't resolve './pages/dms/DMsPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-ERROR in ./src/App.js 19:0-42
-Module not found: Error: Can't resolve './pages/dms/DMsPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-
-ERROR in ./src/App.js 20:0-66
-Module not found: Error: Can't resolve './pages/admin/AdminDashboardPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-
-webpack compiled with 2 errors
-Compiling...
-Failed to compile.
-
-Module not found: Error: Can't resolve './pages/dms/DMsPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-ERROR in ./src/App.js 19:0-42
-Module not found: Error: Can't resolve './pages/dms/DMsPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-
-ERROR in ./src/App.js 20:0-66
-Module not found: Error: Can't resolve './pages/admin/AdminDashboardPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-
-webpack compiled with 2 errors
-Compiling...
-Failed to compile.
-
-Module not found: Error: Can't resolve './pages/dms/DMsPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-ERROR in ./src/App.js 19:0-42
-Module not found: Error: Can't resolve './pages/dms/DMsPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-
-ERROR in ./src/App.js 20:0-66
-Module not found: Error: Can't resolve './pages/admin/AdminDashboardPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-
-webpack compiled with 2 errors
-Compiling...
-Failed to compile.
-
-Module not found: Error: Can't resolve './pages/dms/DMsPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-ERROR in ./src/App.js 19:0-42
-Module not found: Error: Can't resolve './pages/dms/DMsPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-
-ERROR in ./src/App.js 20:0-66
-Module not found: Error: Can't resolve './pages/admin/AdminDashboardPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-
-webpack compiled with 2 errors
-Compiling...
-Failed to compile.
-
-Module not found: Error: Can't resolve './pages/dms/DMsPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-ERROR in ./src/App.js 19:0-42
-Module not found: Error: Can't resolve './pages/dms/DMsPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-
-ERROR in ./src/App.js 20:0-66
-Module not found: Error: Can't resolve './pages/admin/AdminDashboardPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-
-webpack compiled with 2 errors
-Compiling...
-Failed to compile.
-
-Module not found: Error: Can't resolve './pages/dms/DMsPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-ERROR in ./src/App.js 19:0-42
-Module not found: Error: Can't resolve './pages/dms/DMsPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-
-ERROR in ./src/App.js 20:0-66
-Module not found: Error: Can't resolve './pages/admin/AdminDashboardPage' in '/home/kavia/workspace/code-generation/auravibe-35535-44ed5a5a/aura_vibe_frontend/src'
-
-webpack compiled with 2 errors
-Compiling...
-Compiled successfully!
-webpack compiled successfully
-Compiling...
-Compiled successfully!
-webpack compiled successfully
-Compiling...
-Compiled successfully!
-webpack compiled successfully
+webpack compiled with 1 warning
