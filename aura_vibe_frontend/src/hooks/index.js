@@ -1,7 +1,6 @@
-export function useFeed() { return {}; }
+export function useHome() { return {}; }
 export function useProfile() { return {}; }
-export function useExplore() { return {}; }
+export function useSearch() { return {}; }
 export function useNotifications() { return {}; }
-export function useStories() { return {}; }
-export function useDMs() { return {}; }
-export function useAdmin() { return {}; }
+export function useMessages() { return {}; }
+export function useSettings() { return {}; }

@@ -11,14 +11,13 @@ import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
 import ForgotPasswordPage from './pages/auth/ForgotPasswordPage';
 
-import FeedPage from './pages/feed/FeedPage';
-import ExplorePage from './pages/explore/ExplorePage';
+import HomePage from './pages/home/HomePage';
+import SearchPage from './pages/search/SearchPage';
 import ProfilePage from './pages/profile/ProfilePage';
 import EditProfilePage from './pages/profile/EditProfilePage';
 import NotificationsPage from './pages/notifications/NotificationsPage';
-import StoriesPage from './pages/stories/StoriesPage';
-import DMsPage from './pages/dms/DMsPage';
-import AdminDashboardPage from './pages/admin/AdminDashboardPage';
+import MessagesPage from './pages/messages/MessagesPage';
+import SettingsPage from './pages/settings/SettingsPage';
 import AudioReelsPage from './pages/audio/AudioReelsPage';
 import AICaptionsPage from './pages/ai/AICaptionsPage';
 import PostSchedulePage from './pages/schedule/PostSchedulePage';
@@ -37,14 +36,13 @@ export default function App() {
               <Route path="/forgot" element={<ForgotPasswordPage />} />
               {/* Main user content (requires auth) */}
               <Route element={<RequireAuth />}>
-                <Route path="/" element={<FeedPage />} />
-                <Route path="/explore" element={<ExplorePage />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="/search" element={<SearchPage />} />
                 <Route path="/profile/:username" element={<ProfilePage />} />
                 <Route path="/profile/:username/edit" element={<EditProfilePage />} />
                 <Route path="/notifications" element={<NotificationsPage />} />
-                <Route path="/stories" element={<StoriesPage />} />
-                <Route path="/dms/*" element={<DMsPage />} />
-                <Route path="/admin" element={<AdminDashboardPage />} />
+                <Route path="/messages" element={<MessagesPage />} />
+                <Route path="/settings" element={<SettingsPage />} />
                 {/* Optional/bonus features */}
                 <Route path="/audio-reels" element={<AudioReelsPage />} />
                 <Route path="/ai-captions" element={<AICaptionsPage />} />
