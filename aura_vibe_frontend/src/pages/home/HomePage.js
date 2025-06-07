@@ -9,15 +9,6 @@ import React from "react";
  * Right: Trending hashtags & suggested accounts
  */
 export default function HomePage() {
-  // Sidebar links and icons
-  const sidebar = [
-    { label: "Home", icon: "🏠", href: "/" },
-    { label: "Explore", icon: "🔍", href: "/search" },
-    { label: "Messages", icon: "💬", href: "/messages" },
-    { label: "Notifications", icon: "🔔", href: "/notifications" },
-    { label: "Profile", icon: "👤", href: "/profile/auranaut" },
-    { label: "Settings", icon: "⚙️", href: "/settings" },
-  ];
   // Fake feed posts
   const posts = [
     {
@@ -52,59 +43,20 @@ export default function HomePage() {
     "@kendalljenner",
   ];
 
+  // The surrounding sidebar/nav is now handled exclusively by AppLayout
+  // Only render HOME PAGE main feed and right-side panel here
   return (
     <div
       className="flex min-h-screen bg-black text-white font-serif"
       style={{ fontFamily: "'Times New Roman', Times, serif" }}
     >
-      {/* --- Sidebar --- */}
-      <aside className="fixed left-0 top-0 h-full z-30 w-[88px] flex flex-col items-center bg-black border-r border-gray-900 pt-8 pb-6 gap-2">
-        <div className="mb-12 text-base font-bold tracking-widest text-accent">
-          <span className="text-3xl select-none">💫</span>
-          <span className="hidden lg:inline ml-2">Aura</span>
-        </div>
-        <nav className="flex-1 flex flex-col gap-3 w-full items-center">
-          <ul className="flex flex-col w-full gap-2 mt-2">
-            {sidebar.map((item) => (
-              <li key={item.label} className="flex justify-center w-full">
-                <a
-                  href={item.href}
-                  className="
-                    group flex flex-col items-center p-3 w-14 mx-auto
-                    rounded-xl transition-all
-                    hover:bg-accent/80 hover:scale-110 hover:text-black
-                    focus:outline-none focus:ring-2 focus:ring-accent
-                    cursor-pointer
-                  "
-                  title={item.label}
-                  tabIndex={0}
-                >
-                  <span className="text-2xl mb-1 drop-shadow-sm transition-transform group-hover:animate-bounce">
-                    {item.icon}
-                  </span>
-                  <span className="text-[0.7rem] font-medium tracking-wide opacity-80 group-hover:opacity-100">
-                    {item.label}
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div className="mt-auto mb-1 text-xs text-gray-600 opacity-40 font-semibold text-center">
-          <span className="block">© AuraVibe</span>
-        </div>
-      </aside>
-
       {/* --- Main Feed --- */}
       <main
-        className="
-          flex-1 mx-auto flex justify-center
-          px-2 md:px-0
-          "
-        style={{ marginLeft: 96, minHeight: "100vh" }}
+        className="flex-1 mx-auto flex justify-center px-2 md:px-0"
+        style={{ minHeight: "100vh" }}
       >
         <section className="w-full max-w-xl py-8 flex flex-col gap-6">
-          {/* Spacer for sidebar */}
+          {/* Spacer for sidebar (for visual continuity if needed) */}
           <div className="h-4 lg:h-0" />
           {/* Posts */}
           {posts.map((post, idx) => (
