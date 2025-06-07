@@ -13,27 +13,35 @@ import React from "react";
  */
 export default function HomePage() {
   // Fake feed posts
+  // PUBLIC sample image sources from Unsplash/Pexels
+  // - https://unsplash.com/photos/people-walking-on-pathway-during-daytime-8manzosDSGM ("moody")
+  // - https://unsplash.com/photos/green-potted-plant-on-brown-wooden-table-BoVZZUDyY3k ("plants")
+  // - https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg ("selfie", by Pixabay)
+
   const posts = [
     {
       username: "moodymuse",
       profile_pic: null,
-      img: null,
+      img: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80", // moody muse city street, Anthony DELANOIX, Unsplash
       caption: "Feeling the vibes today!",
       comments: ["awesome!", "so cool!"],
+      alt: "Moody city street by Anthony DELANOIX on Unsplash"
     },
     {
       username: "dailyplantlove",
       profile_pic: null,
-      img: null,
+      img: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80", // green potted plant, Unsplash
       caption: "New plant in my collection 🌱",
       comments: ["gorgeous!", "plant goals!"],
+      alt: "Green potted plant in sunlight by Paul Hanaoka on Unsplash"
     },
     {
       username: "cutiequeen",
       profile_pic: null,
-      img: null,
+      img: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&w=800&q=80", // selfie, pexels.com (Pixabay)
       caption: "Selfie Sunday 👑",
       comments: ["pretty!", "slay!"],
+      alt: "Stylish young woman selfie smiling by Pixabay on Pexels"
     },
   ];
   // NEW health/lifestyle themed hashtags per instructions
@@ -112,7 +120,16 @@ export default function HomePage() {
                   overflow-hidden
                 "
               >
-                <span className="text-4xl text-gray-600 select-none">🖼️</span>
+                {post.img ? (
+                  <img
+                    src={post.img}
+                    alt={post.alt || "AuraVibe sample post image"}
+                    className="w-full h-full object-cover object-center transition-transform duration-200 hover:scale-105"
+                    draggable="false"
+                  />
+                ) : (
+                  <span className="text-4xl text-gray-600 select-none">🖼️</span>
+                )}
               </div>
               {/* Action bar */}
               <div className="flex gap-5 items-center mt-0 mb-[-6px] select-none">
