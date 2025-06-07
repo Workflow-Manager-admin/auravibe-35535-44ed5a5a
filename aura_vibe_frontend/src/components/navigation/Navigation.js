@@ -6,10 +6,10 @@ export default function Navigation() {
    * Now includes "glowing" hover effect for nav labels
    */
   return (
-    <nav className="bg-black border-r border-gray-900 p-4 min-w-[64px] flex flex-col items-center gap-6">
+    <nav className="bg-black border-r border-gray-900 p-5 min-w-[88px] w-28 flex flex-col items-center gap-7">
       {/* LOGO/ICON */}
       <span className="text-2xl font-bold font-serif">AuraGram</span>
-      <ul className="flex flex-col gap-4 mt-6">
+      <ul className="flex flex-col gap-5 mt-7">
         <li>
           <a
             href="/"
