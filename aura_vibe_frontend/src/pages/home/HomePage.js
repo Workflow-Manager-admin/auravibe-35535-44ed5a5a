@@ -1,4 +1,5 @@
 import React from "react";
+import StoriesCarousel from "./StoriesCarousel";
 
 // PUBLIC_INTERFACE
 /**
@@ -89,6 +90,8 @@ export default function HomePage() {
         style={{ minHeight: "100vh" }}
       >
         <section className="w-full max-w-xl py-8 flex flex-col gap-6">
+          {/* Story Carousel: horizontally scrollable avatars */}
+          <StoriesCarousel />
           {/* Spacer for sidebar (for visual continuity if needed) */}
           <div className="h-4 lg:h-0" />
           {/* Posts */}
