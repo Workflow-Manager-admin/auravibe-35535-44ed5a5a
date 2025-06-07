@@ -1,2 +1,2 @@
-// Removed. Will create real contexts for Theme, Auth, etc.
-export {};
+export { AuthProvider, useAuth } from "./AuthContext";
+export { ThemeProvider, useTheme } from "./ThemeContext";
