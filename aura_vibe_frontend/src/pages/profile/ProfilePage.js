@@ -52,14 +52,14 @@ export default function ProfilePage() {
     );
   }
   function canSubmit() {
+    // Now, profile picture and bio are optional. Everything else must be non-empty/valid.
     return (
       form.name.trim() &&
       form.username.trim() &&
       validateEmail(form.email) &&
       validatePhone(form.phone) &&
       form.dob &&
-      form.purpose.trim() &&
-      photoUrl
+      form.purpose.trim()
     );
   }
 
@@ -115,21 +115,21 @@ export default function ProfilePage() {
         }}
       >
         <form
-          className="bg-black bg-opacity-85 p-8 rounded-3xl shadow-2xl w-full max-w-lg mx-auto flex flex-col gap-7 border border-gray-800 min-w-[325px] font-serif"
+          className="bg-black bg-opacity-85 p-12 rounded-[2.3rem] shadow-2xl w-full max-w-xl mx-auto flex flex-col gap-9 border border-gray-800 min-w-[360px] font-serif transition-all duration-200"
           autoComplete="off"
           onSubmit={handleSubmit}
           style={{
             boxShadow:
-              "0 0 28px 8px rgba(120, 7, 7, 0.08), 0 2px 6px #240c2b33",
+              "0 0 44px 10px rgba(120,7,57,0.11), 0 3px 18px #d6407c25",
           }}
         >
-          <h2 className="text-3xl text-center font-bold font-serif mb-2 text-accent tracking-wide drop-shadow glow">
-            Complete Your Profile
+          <h2 className="text-4xl text-center font-bold font-serif mb-1.5 text-accent tracking-wide drop-shadow glow">
+            Complete Your AuraGram Profile
           </h2>
           {/* Avatar photo upload/preview */}
           <div className="flex items-center justify-center flex-col gap-2">
             <div
-              className="w-28 h-28 rounded-full bg-gray-900 border-4 border-accent/30 shadow-lg flex items-center justify-center overflow-hidden group transition-all duration-200"
+              className="w-32 h-32 rounded-full bg-gray-900 border-4 border-accent/30 shadow-lg flex items-center justify-center overflow-hidden group transition-all duration-200"
               style={{
                 boxShadow: photoUrl
                   ? "0 0 20px 5px #7a174c44, 0 2px 16px #9a24b966"
@@ -169,9 +169,9 @@ export default function ProfilePage() {
           </div>
 
           {/* Grouped fields in a 2-col responsive grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
-              <label className="block mb-1 font-serif text-base">Full Name</label>
+              <label className="block mb-1 font-serif text-base">Full Name <span className="text-accent">*</span></label>
               <input
                 className="px-3 py-2 rounded bg-gray-900 border border-accent/20 text-white font-serif w-full focus:border-accent/70 focus:outline-none"
                 type="text"
@@ -199,7 +199,7 @@ export default function ProfilePage() {
               </select>
             </div>
             <div>
-              <label className="block mb-1 font-serif text-base">Phone</label>
+              <label className="block mb-1 font-serif text-base">Phone <span className="text-accent">*</span></label>
               <input
                 className={
                   "px-3 py-2 rounded bg-gray-900 border " +
@@ -215,10 +215,11 @@ export default function ProfilePage() {
                 maxLength={18}
                 placeholder="+1 123-456-7890"
                 autoComplete="tel"
+                required
               />
             </div>
             <div>
-              <label className="block mb-1 font-serif text-base">Date of Birth</label>
+              <label className="block mb-1 font-serif text-base">Date of Birth <span className="text-accent">*</span></label>
               <input
                 className="px-3 py-2 rounded bg-gray-900 border border-accent/20 text-white font-serif w-full focus:border-accent/70 focus:outline-none"
                 type="date"
@@ -230,7 +231,7 @@ export default function ProfilePage() {
               />
             </div>
             <div>
-              <label className="block mb-1 font-serif text-base">Email</label>
+              <label className="block mb-1 font-serif text-base">Email <span className="text-accent">*</span></label>
               <input
                 className={
                   "px-3 py-2 rounded bg-gray-900 border " +
@@ -249,7 +250,7 @@ export default function ProfilePage() {
               />
             </div>
             <div>
-              <label className="block mb-1 font-serif text-base">Username</label>
+              <label className="block mb-1 font-serif text-base">Username <span className="text-accent">*</span></label>
               <input
                 className="px-3 py-2 rounded bg-gray-900 border border-accent/20 text-white font-serif w-full focus:border-accent/70 focus:outline-none"
                 type="text"
@@ -263,30 +264,52 @@ export default function ProfilePage() {
               />
             </div>
             <div className="sm:col-span-2">
-              <label className="block mb-1 font-serif text-base">Purpose of Account</label>
-              <input
+              <label className="block mb-1 font-serif text-base">Purpose of Account <span className="text-accent">*</span></label>
+              <select
                 className="px-3 py-2 rounded bg-gray-900 border border-accent/20 text-white font-serif w-full focus:border-accent/70 focus:outline-none"
                 name="purpose"
                 value={form.purpose}
                 onChange={handleChange}
-                maxLength={64}
-                placeholder="e.g., Share my vibes, mood posts, connect"
                 required
-              />
+              >
+                <option value="">Select account type…</option>
+                <option value="public">Public</option>
+                <option value="private">Private</option>
+                <option value="business">Business</option>
+              </select>
             </div>
+          </div>
+
+          {/* Move bio field below purpose; it's optional */}
+          <div className="w-full flex flex-col gap-1 mt-0">
+            <label className="font-serif font-semibold text-accent text-lg mb-1">
+              Bio
+            </label>
+            <textarea
+              className="bg-gray-900 border border-accent/20 rounded-xl px-4 py-2 w-full text-white font-serif text-base focus:outline-none focus:border-accent/70 transition-all min-h-[44px] max-h-28 shadow-inner"
+              value={bio}
+              onChange={handleBioChange}
+              maxLength={250}
+              rows={3}
+              aria-label="Write your bio"
+              placeholder="Write something about your vibe, dreams, or mood…"
+              style={{ resize: "vertical" }}
+            />
+            <div className="flex justify-end text-xs text-gray-400">{bio.length} / 250</div>
           </div>
 
           <button
             type="submit"
             className={
-              "w-full py-3 rounded-xl font-bold font-serif text-lg bg-gradient-to-tr from-accent via-pink-700/80 to-fuchsia-900/80 shadow-md text-white drop-shadow-2xl ring-2 ring-accent/30 hover:scale-105 transition-all duration-200" +
+              "w-full py-3 rounded-xl font-bold font-serif text-xl bg-gradient-to-tr from-accent via-pink-700/80 to-fuchsia-900/80 shadow-md text-white drop-shadow-2xl ring-2 ring-accent/30 hover:scale-105 transition-all duration-200" +
               (canSubmit()
                 ? ""
                 : " opacity-60 cursor-not-allowed pointer-events-none")
             }
             disabled={!canSubmit()}
+            aria-label="Create profile with provided details"
           >
-            Create Profile
+            Create Your Profile
           </button>
         </form>
       </section>
