@@ -35,8 +35,88 @@ const PASTEL_PALETTE = [
 ];
 
 const EXPORE_IMAGES = [
-  // Placeholder image URLs or null for 🖼️ emoji
-  null, null, null, null, null, null, null, null, null,
+  // Example: Each image is an object with url, alt, and attribution
+  {
+    url: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
+    alt: "Smiling woman in sunglasses on pink wall by Lidya Nada on Unsplash",
+    attribution: {
+      name: "Lidya Nada",
+      link: "https://unsplash.com/@lidyanada",
+      source: "Unsplash"
+    }
+  },
+  {
+    url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+    alt: "Mountain landscape at sunset by Sean Pierce on Unsplash",
+    attribution: {
+      name: "Sean Pierce",
+      link: "https://unsplash.com/@seanpierce",
+      source: "Unsplash"
+    }
+  },
+  {
+    url: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&w=800&q=80",
+    alt: "Neon city street night in Asia by Alexandre Chambon on Pexels",
+    attribution: {
+      name: "Alexandre Chambon",
+      link: "https://www.pexels.com/@alexandrechambon/",
+      source: "Pexels"
+    }
+  },
+  {
+    url: "https://images.unsplash.com/photo-1465101178521-c1a9136a37b1?auto=format&fit=crop&w=800&q=80",
+    alt: "Tropical plant leaves with dramatic light by Chris Lee on Unsplash",
+    attribution: {
+      name: "Chris Lee",
+      link: "https://unsplash.com/@chrislee",
+      source: "Unsplash"
+    }
+  },
+  {
+    url: "https://images.pexels.com/photos/247932/pexels-photo-247932.jpeg?auto=compress&w=800&q=80",
+    alt: "People walking under rainbow umbrella by Pixabay on Pexels",
+    attribution: {
+      name: "Pixabay",
+      link: "https://www.pexels.com/@pixabay/",
+      source: "Pexels"
+    }
+  },
+  {
+    url: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80",
+    alt: "Three women laughing together by Simon Maage on Unsplash",
+    attribution: {
+      name: "Simon Maage",
+      link: "https://unsplash.com/@simonmaage",
+      source: "Unsplash"
+    }
+  },
+  {
+    url: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80",
+    alt: "Vibrant pastel graffiti wall by Hugo Sousa on Unsplash",
+    attribution: {
+      name: "Hugo Sousa",
+      link: "https://unsplash.com/@hugosouza",
+      source: "Unsplash"
+    }
+  },
+  {
+    url: "https://images.pexels.com/photos/110854/pexels-photo-110854.jpeg?auto=compress&w=800&q=80",
+    alt: "Balloons floating in sky by Pixabay on Pexels",
+    attribution: {
+      name: "Pixabay",
+      link: "https://www.pexels.com/@pixabay/",
+      source: "Pexels"
+    }
+  },
+  {
+    url: "https://images.unsplash.com/photo-1424746219973-8fe3bd07d8e3?auto=format&fit=crop&w=800&q=80",
+    alt: "Relaxed person sitting at lake edge in mist by Tony Liao on Unsplash",
+    attribution: {
+      name: "Tony Liao",
+      link: "https://unsplash.com/@tonyliao",
+      source: "Unsplash"
+    }
+  }
 ];
 
 export default function SearchPage() {
@@ -164,15 +244,48 @@ export default function SearchPage() {
                 `}
                 tabIndex={0}
                 role="button"
-                aria-label="Explore Image Placeholder"
+                aria-label={img?.alt ? img.alt : "Explore Image Placeholder"}
               >
-                {img ? (
-                  // If using actual images, use <img />
-                  <img
-                    src={img}
-                    alt="Suggested"
-                    className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
-                  />
+                {img && img.url ? (
+                  <>
+                    <img
+                      src={img.url}
+                      alt={img.alt}
+                      className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                      draggable="false"
+                    />
+                    {/* Attribution overlay */}
+                    <div
+                      className="
+                        absolute bottom-2 left-2 right-2
+                        bg-black/60 backdrop-blur rounded-lg px-3 py-1
+                        text-xs text-white flex items-center gap-1
+                        opacity-85 hover:opacity-100 transition
+                        pointer-events-auto z-10
+                      "
+                      style={{ fontSize: '0.90rem', lineHeight: 1.1 }}
+                    >
+                      <span>Photo by</span>
+                      <a
+                        href={img.attribution.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-accent"
+                        tabIndex={0}
+                      >{img.attribution.name}</a>
+                      <span>on</span>
+                      <a
+                        href={img.attribution.source === "Unsplash"
+                          ? "https://unsplash.com"
+                          : "https://www.pexels.com"
+                        }
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-accent"
+                        tabIndex={0}
+                      >{img.attribution.source}</a>
+                    </div>
+                  </>
                 ) : (
                   <span
                     className="
