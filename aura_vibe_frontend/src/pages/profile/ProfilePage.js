@@ -124,7 +124,14 @@ export default function ProfilePage() {
             maxWidth: "860px"
           }}
         >
-          <h2 className="text-4xl text-center font-bold font-serif mb-1.5 text-accent tracking-wide drop-shadow glow">
+          <h2
+            className="text-4xl text-center font-bold font-serif mb-1.5 text-accent tracking-wide drop-shadow-[0_0_15px_white] glow-white"
+            style={{
+              textShadow:
+                "0 0 18px #fff, 0 0 32px #fff, 0 0 6px #fff, 0 0 0 #780707",
+              filter: "drop-shadow(0 0 20px white) drop-shadow(0 0 10px #fff)",
+            }}
+          >
             Complete Your AuraGram Profile
           </h2>
           {/* Avatar photo upload/preview */}

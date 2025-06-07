@@ -55,6 +55,21 @@ a:hover {
   filter: drop-shadow(0 0 6px #780707);
 }
 
+/* Strong white text glow for prominent headings (e.g., Profile Completion) */
+.glow-white,
+.drop-shadow-white {
+  /* fallback for earlier browsers */
+  text-shadow:
+    0 0 18px #fff,
+    0 0 32px #fff,
+    0 0 6px #fff,
+    0 0 0 #780707;
+  filter:
+    drop-shadow(0 0 20px white)
+    drop-shadow(0 0 10px #fff);
+}
+
+
 /* Tailwind helper: always prefer font-serif */
 * {
   font-family: 'Times New Roman', Times, serif;
